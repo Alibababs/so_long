@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:44:26 by alibabab          #+#    #+#             */
-/*   Updated: 2024/07/18 12:14:50 by pbailly          ###   ########.fr       */
+/*   Updated: 2024/07/27 18:21:06 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	all(t_data *data, char **argv)
 	check_map(data);
 	path_checker(data);
 	mlx_hook(data->win, 17, 0, cross, data);
-	mlx_key_hook(data->win, touch, data);
+	mlx_hook(data->win, 02, (1L << 0), touch, data);
 	mlx_loop(data->mlx);
 }
 

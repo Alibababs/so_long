@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 10:59:02 by pbailly           #+#    #+#             */
-/*   Updated: 2024/07/20 16:49:27 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/07/27 18:20:40 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ static void	find_player_position(t_data *data, t_point *player_pos)
 static int	is_valid_move(t_data *data, int x, int y, int **visited)
 {
 	return (x >= 0 && y >= 0 && x < data->size_x / IMG_W && y < data->size_y
-		/ IMG_H && data->map[y][x] != '1' && data->map[y][x] != 'R' && !visited[y][x]);
+		/ IMG_H && data->map[y][x] != '1' && data->map[y][x] != 'R'
+		&& !visited[y][x]);
 }
 
 static void	explore_map(t_data *data, int x, int y, int **visited)

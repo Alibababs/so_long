@@ -6,11 +6,23 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:28:35 by alibabab          #+#    #+#             */
-/*   Updated: 2024/07/27 16:28:23 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/07/27 18:21:18 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	init_data(t_data *data)
+{
+	data->movement = 0;
+	data->obj = 0;
+	data->poison = 0;
+	data->c_acces = 0;
+	data->exit_found = 0;
+	data->player = 0;
+	data->text_box = 0;
+	data->background = 0;
+}
 
 void	init_background(t_data *data)
 {

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 15:34:30 by pbailly           #+#    #+#             */
-/*   Updated: 2024/07/17 18:16:20 by pbailly          ###   ########.fr       */
+/*   Updated: 2024/07/27 18:14:05 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_line_length(int fd)
+int	ft_line_length(int fd, t_data *data)
 {
 	char	buffer[1];
 	int		length;
@@ -29,10 +29,16 @@ int	ft_line_length(int fd)
 		else
 			break ;
 	}
+	if (length == 0)
+	{
+		ft_printf("Error\nEmpty line\n");
+		free(data);
+		exit(EXIT_FAILURE);
+	}
 	return (length);
 }
 
-int	ft_count_lines(int fd, int x, int img_w)
+int	ft_count_lines(int fd, int x, int img_w, t_data *data)
 {
 	char	*line;
 	int		linecount;
@@ -47,7 +53,8 @@ int	ft_count_lines(int fd, int x, int img_w)
 				&& *line != '\n'))
 		{
 			free(line);
-			ft_printf("Error\nMap is not rectangular\n");
+			free(data);
+			ft_printf("Error\nEmpty line or first line too long\n");
 			exit(EXIT_FAILURE);
 		}
 		else

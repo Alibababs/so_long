@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 00:09:05 by alibabab          #+#    #+#             */
-/*   Updated: 2024/07/18 17:29:59 by pbailly          ###   ########.fr       */
+/*   Updated: 2024/07/27 18:22:27 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int	touch(int keycode, t_data *data)
 {
 	if (keycode == 65307)
 		ft_lose(data);
-	else if (keycode == 'w')
+	else if (keycode == 'w' || keycode == 65362)
 		move(data, 'y', UP);
-	else if (keycode == 'a')
+	else if (keycode == 'a' || keycode == 65361)
 		move(data, 'x', LEFT);
-	else if (keycode == 's')
+	else if (keycode == 's' || keycode == 65364)
 		move(data, 'y', DOWN);
-	else if (keycode == 'd')
+	else if (keycode == 'd' || keycode == 65363)
 		move(data, 'x', RIGHT);
 	if (data->map[data->p_y][data->p_x] == 'E')
 	{
@@ -95,9 +95,9 @@ void	move(t_data *data, char pos, int dir)
 		data->p_x = data->p_x + 1 * dir;
 	}
 	else if (((pos == 'y' && data->map[data->p_y + 1 * dir][data->p_x] == 'E')
-			&& (collected != data->poison)) || ((pos == 'x'
-				&& data->map[data->p_y][data->p_x + 1 * dir] == 'E')
-			&& (collected != data->poison)))
+		&& (collected != data->poison)) || ((pos == 'x'
+		&& data->map[data->p_y][data->p_x + 1 * dir] == 'E')
+		&& (collected != data->poison)))
 		ft_printf("All poisons must be collected before making the potion.\n");
 	mlx_put_image_to_window(data->mlx, data->win, data->player, (data->p_x
 			* IMG_W), (data->p_y * IMG_H));

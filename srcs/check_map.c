@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:33:35 by pbailly           #+#    #+#             */
-/*   Updated: 2024/07/27 16:28:36 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/07/27 17:36:39 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	check_argc(t_data *data, int argc, char **argv)
 {
 	int	fd;
 
+	init_data(data);
 	fd = open(argv[1], O_RDONLY);
 	if (argc != 2 || fd < 0)
 	{
@@ -29,14 +30,8 @@ void	check_argc(t_data *data, int argc, char **argv)
 		free(data);
 		exit(EXIT_FAILURE);
 	}
-	data->size_x = (ft_line_length(fd) * IMG_W);
-	data->size_y = (ft_count_lines(fd, data->size_x, IMG_W) * IMG_H);
-	data->movement = 0;
-	data->obj = 0;
-	data->poison = 0;
-	data->c_acces = 0;
-	data->exit_found = 0;
-	data->player = 0;
+	data->size_x = (ft_line_length(fd, data) * IMG_W);
+	data->size_y = (ft_count_lines(fd, data->size_x, IMG_W, data) * IMG_H);
 	close(fd);
 }
 

@@ -84,4 +84,7 @@ fclean: clean
 
 re: fclean all
 
+norminette:
+	norminette ./srcs/
+
 .PHONY: all clean fclean re
