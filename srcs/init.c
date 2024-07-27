@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:28:35 by alibabab          #+#    #+#             */
-/*   Updated: 2024/07/18 12:14:32 by pbailly          ###   ########.fr       */
+/*   Updated: 2024/07/27 16:28:23 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	init_player(t_data *data, char *path)
 
 	data->p_x = data->x;
 	data->p_y = data->y;
+	if (data->player)
+		mlx_destroy_image(data->mlx, data->player);
 	data->player = mlx_xpm_file_to_image(data->mlx, path, &img_width,
 			&img_height);
 	mlx_put_image_to_window(data->mlx, data->win, data->player, (data->x

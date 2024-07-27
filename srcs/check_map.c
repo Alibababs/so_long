@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:33:35 by pbailly           #+#    #+#             */
-/*   Updated: 2024/07/18 12:15:27 by pbailly          ###   ########.fr       */
+/*   Updated: 2024/07/27 16:28:36 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	check_argc(t_data *data, int argc, char **argv)
 	data->poison = 0;
 	data->c_acces = 0;
 	data->exit_found = 0;
+	data->player = 0;
 	close(fd);
 }
 
