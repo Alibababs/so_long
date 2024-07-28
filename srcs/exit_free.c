@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 15:27:18 by pbailly           #+#    #+#             */
-/*   Updated: 2024/07/27 17:30:51 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/07/28 19:33:50 by pbailly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	error_msg(char *message, t_data *data)
 {
 	{
-		perror(message);
+		ft_printf(message);
 		free_data(data);
 		exit(EXIT_FAILURE);
 	}

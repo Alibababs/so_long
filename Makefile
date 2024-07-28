@@ -1,6 +1,6 @@
 NAME		=	so_long
 
-CC			=	gcc
+CC			=	cc
 
 FLAG		=	-Wall -Wextra -Werror -g3
 

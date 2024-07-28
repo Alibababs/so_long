@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:47:31 by pbailly           #+#    #+#             */
-/*   Updated: 2024/07/27 17:30:12 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/07/28 19:30:53 by pbailly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void	load_map(t_data *data, char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		error_msg("Error\nUnable to open map file", data);
+		error_msg("Error\nUnable to open map file\n", data);
 	data->map = malloc((data->size_y / IMG_H + 1) * sizeof(char *));
 	if (!data->map)
-		error_msg("Error\nError allocating", data);
+		error_msg("Error\nError allocating\n", data);
 	y = 0;
 	line = get_next_line(fd);
 	while (line != NULL)
@@ -61,6 +61,6 @@ void	load_map(t_data *data, char *filename)
 	}
 	data->map[y] = NULL;
 	if (y == 0)
-		error_msg("Error\nMap file is empty", data);
+		error_msg("Error\nMap file is empty\n", data);
 	close(fd);
 }

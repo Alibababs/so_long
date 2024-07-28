@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:33:35 by pbailly           #+#    #+#             */
-/*   Updated: 2024/07/27 17:36:39 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/07/28 19:41:16 by pbailly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	check_characters(t_data *data)
 			if (data->map[y][x] != '0' && data->map[y][x] != '1'
 				&& data->map[y][x] != 'C' && data->map[y][x] != 'E'
 				&& data->map[y][x] != 'P' && data->map[y][x] != 'R')
-				error_msg("Error\nInvalid character in map", data);
+				error_msg("Error\nInvalid character in map\n", data);
 			x++;
 		}
 		y++;
@@ -82,7 +82,7 @@ static void	check_count(t_data *data)
 		y++;
 	}
 	if (exit_count != 1 || data->poison < 1 || player_count != 1)
-		error_msg("Error\nMap must contain one E, min. one C and one P", data);
+		error_msg("Error\nMap must contain one E, one P, min. one C.\n", data);
 }
 
 static void	check_walls_rectangular(t_data *data)
@@ -97,7 +97,7 @@ static void	check_walls_rectangular(t_data *data)
 	{
 		if (data->map[0][x] != '1' || data->map[data->size_y / IMG_H
 			- 1][x] != '1')
-			error_msg("Error\nMap is not closed by walls", data);
+			error_msg("Error\nMap is not closed by walls\n", data);
 		x++;
 	}
 	y = 0;
@@ -105,16 +105,16 @@ static void	check_walls_rectangular(t_data *data)
 	{
 		if (data->map[y][0] != '1' || data->map[y][data->size_x / IMG_W
 			- 1] != '1')
-			error_msg("Error\nMap is not closed by walls", data);
+			error_msg("Error\nMap is not closed by walls\n", data);
 		if (ft_strlen(data->map[y]) != row_length)
-			error_msg("Error\nMap is not rectangular", data);
+			error_msg("Error\nMap is not rectangular\n", data);
 		y++;
 	}
 }
 
 void	check_map(t_data *data)
 {
-	check_characters(data);
-	check_count(data);
 	check_walls_rectangular(data);
+	check_count(data);
+	check_characters(data);
 }

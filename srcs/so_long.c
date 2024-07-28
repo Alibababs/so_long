@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:44:26 by alibabab          #+#    #+#             */
-/*   Updated: 2024/07/27 18:21:06 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/07/28 19:33:47 by pbailly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int	main(int argc, char **argv)
 	check_argc(data, argc, argv);
 	data->mlx = mlx_init();
 	if (!data->mlx)
-		error_msg("Error\nFailed to initialize mlx", data);
+		error_msg("Error\nFailed to initialize mlx\n", data);
 	data->win = mlx_new_window(data->mlx, data->size_x, data->size_y,
 			"The Witchcat 3 : Wild hunt");
 	if (!data->win)
-		error_msg("Error\nFailed to initialize window", data);
+		error_msg("Error\nFailed to initialize window\n", data);
 	all(data, argv);
 	free_data(data);
 	exit(EXIT_FAILURE);

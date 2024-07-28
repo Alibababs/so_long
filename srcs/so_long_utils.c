@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 15:34:30 by pbailly           #+#    #+#             */
-/*   Updated: 2024/07/27 18:14:05 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/07/28 19:29:32 by pbailly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_count_lines(int fd, int x, int img_w, t_data *data)
 		{
 			free(line);
 			free(data);
-			ft_printf("Error\nEmpty line or first line too long\n");
+			ft_printf("Error\nMap is not rectangular\n");
 			exit(EXIT_FAILURE);
 		}
 		else

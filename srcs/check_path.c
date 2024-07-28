@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 10:59:02 by pbailly           #+#    #+#             */
-/*   Updated: 2024/07/27 18:20:40 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/07/28 19:31:29 by pbailly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	path_checker(t_data *data)
 	find_player_position(data, &player_pos);
 	visited = malloc((data->size_y / IMG_H) * sizeof(int *));
 	if (!visited)
-		error_msg("Error\nUnable to allocate memory for visited.", data);
+		error_msg("Error\nUnable to allocate memory for visited.\n", data);
 	init_visited(data, visited);
 	explore_map(data, player_pos.x, player_pos.y, visited);
 	i = 0;
@@ -93,5 +93,5 @@ void	path_checker(t_data *data)
 		free(visited[i++]);
 	free(visited);
 	if (data->c_acces != data->poison || !data->exit_found)
-		error_msg("Error\nNo valid path in the map", data);
+		error_msg("Error\nNo valid path in the map\n", data);
 }
