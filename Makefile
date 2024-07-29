@@ -80,6 +80,7 @@ fclean: clean
 	@echo "\033[1;32mDone\n"
 	@echo "\033[0;31mDeleting $(MLX_PATH)...\n"
 	@rm -rf $(MLX_PATH)
+	@echo "\033[1;32mDone\n"
 
 re: fclean all
 
