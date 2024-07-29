@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:28:35 by alibabab          #+#    #+#             */
-/*   Updated: 2024/07/27 18:21:18 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/07/29 16:22:56 by pbailly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	init_background(t_data *data)
 	path_img = "./textures/background.xpm";
 	data->background = mlx_xpm_file_to_image(data->mlx, path_img, &img_width,
 			&img_height);
+	if (!data->background)
+		error_msg("Error\n", data);
 	y = 0;
 	while (y < data->size_y)
 	{
@@ -57,6 +59,8 @@ void	init_obj(t_data *data, char *path)
 	if (data->obj)
 		mlx_destroy_image(data->mlx, data->obj);
 	data->obj = mlx_xpm_file_to_image(data->mlx, path, &img_width, &img_height);
+	if (!data->obj)
+		error_msg("Error\n", data);
 	mlx_put_image_to_window(data->mlx, data->win, data->obj, (data->x * IMG_W),
 		(data->y * IMG_H));
 }
@@ -72,6 +76,8 @@ void	init_player(t_data *data, char *path)
 		mlx_destroy_image(data->mlx, data->player);
 	data->player = mlx_xpm_file_to_image(data->mlx, path, &img_width,
 			&img_height);
+	if (!data->text_box)
+		error_msg("Error\n", data);
 	mlx_put_image_to_window(data->mlx, data->win, data->player, (data->x
 			* IMG_W), (data->y * IMG_H));
 }
@@ -83,6 +89,8 @@ void	init_text_box(t_data *data)
 
 	data->text_box = mlx_xpm_file_to_image(data->mlx, "./textures/text_box.xpm",
 			&img_width, &img_height);
+	if (!data->text_box)
+		error_msg("Error\n", data);
 	mlx_put_image_to_window(data->mlx, data->win, data->text_box, 0, 0);
 	mlx_string_put(data->mlx, data->win, 24, 25, 0xDCDCDC, "Movements:");
 	mlx_string_put(data->mlx, data->win, 90, 26, 0xDCDCDC, "0");

@@ -6,7 +6,7 @@
 /*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:47:31 by pbailly           #+#    #+#             */
-/*   Updated: 2024/07/28 19:30:53 by pbailly          ###   ########.fr       */
+/*   Updated: 2024/07/28 19:50:00 by pbailly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,58 @@ void	load_map(t_data *data, char *filename)
 	if (y == 0)
 		error_msg("Error\nMap file is empty\n", data);
 	close(fd);
+}
+
+int	ft_line_length(int fd, t_data *data)
+{
+	char	buffer[1];
+	int		length;
+	int		bytes;
+
+	buffer[0] = '\0';
+	bytes = 1;
+	length = 0;
+	while (bytes == 1)
+	{
+		bytes = read(fd, buffer, 1);
+		if (buffer[0] != '\n')
+			length++;
+		else
+			break ;
+	}
+	if (length == 0)
+	{
+		ft_printf("Error\nEmpty line\n");
+		free(data);
+		exit(EXIT_FAILURE);
+	}
+	return (length);
+}
+
+int	ft_count_lines(int fd, int x, int img_w, t_data *data)
+{
+	char	*line;
+	int		linecount;
+
+	linecount = 1;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
+		if ((int)ft_strlen(line) < x / img_w || (ft_strlen(line) == 1
+				&& *line != '\n'))
+		{
+			free(line);
+			free(data);
+			ft_printf("Error\nMap is not rectangular\n");
+			exit(EXIT_FAILURE);
+		}
+		else
+		{
+			free(line);
+			linecount++;
+		}
+	}
+	return (linecount);
 }

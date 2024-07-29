@@ -6,7 +6,7 @@
 /*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:33:35 by pbailly           #+#    #+#             */
-/*   Updated: 2024/07/28 19:41:16 by pbailly          ###   ########.fr       */
+/*   Updated: 2024/07/29 16:56:24 by pbailly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,9 @@ static void	check_count(t_data *data)
 
 static void	check_walls_rectangular(t_data *data)
 {
-	int		x;
-	int		y;
-	size_t	row_length;
+	int	x;
+	int	y;
 
-	row_length = ft_strlen(data->map[0]);
 	x = 0;
 	while (x < data->size_x / IMG_W)
 	{
@@ -106,7 +104,7 @@ static void	check_walls_rectangular(t_data *data)
 		if (data->map[y][0] != '1' || data->map[y][data->size_x / IMG_W
 			- 1] != '1')
 			error_msg("Error\nMap is not closed by walls\n", data);
-		if (ft_strlen(data->map[y]) != row_length)
+		if (ft_strlen(data->map[y]) != ft_strlen(data->map[0])
 			error_msg("Error\nMap is not rectangular\n", data);
 		y++;
 	}

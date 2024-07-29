@@ -24,7 +24,6 @@ MLX_EX		=	$(MLX_LIB) $(MLX_FLAG)
 
 C_FILE		=	so_long.c 		\
 				init.c 			\
-				so_long_utils.c \
 				map.c 			\
 				move.c			\
 				exit_free.c		\
