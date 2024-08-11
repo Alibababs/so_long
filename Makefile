@@ -41,12 +41,12 @@ OBJ			=	$(SRC:.c=.o)
 
 all: $(NAME)
 
-lib:
+$(LIBFT_LIB):
 	@echo "\033[0;33mCOMPILING $(LIBFT_PATH)\n"
 	@make -sC $(LIBFT_PATH)
 	@echo "\033[1;32mlibft.a created\n"
 
-mlx:
+$(MLX_LIB):
 	@echo "\033[0;33mCLONING $(MLX_CLONE)...\n"
 	@if [ ! -d "$(MLX_PATH)" ]; then \
 		git clone -q $(MLX_CLONE); \
@@ -58,7 +58,7 @@ mlx:
 	@make -sC $(MLX_PATH)
 	@echo "\033[1;32m\nMLX_lib created"
 
-$(NAME): lib mlx $(OBJ)
+$(NAME): $(LIBFT_LIB) $(MLX_LIB) $(OBJ)
 	@echo "\033[0;33m\nCOMPILING SO_LONG...\n"
 	@$(CC) $(OBJ) $(LIBFT_LIB) $(MLX_EX) -o $(NAME)
 	@echo "\033[1;32m./so_long created\n"
@@ -87,4 +87,4 @@ re: fclean all
 norminette:
 	norminette ./srcs/
 
-.PHONY: all clean fclean re mlx lib norminette
+.PHONY: all clean fclean re
