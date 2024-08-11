@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:33:35 by pbailly           #+#    #+#             */
-/*   Updated: 2024/08/11 15:52:14 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/08/11 17:03:56 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,16 @@ void	check_argc(t_data *data, int argc, char **argv)
 
 	init_data(data);
 	if (argc != 2)
-	{
-		ft_printf("Error\nExpected 2 arguments\n");
-		free(data);
-		exit(EXIT_FAILURE);
-	}
+		error_msg("Error\nExpected 2 arguments\n", data);
 	if (!ft_strnstr(&argv[1][ft_strlen(argv[1]) - 4], ".ber", 4))
-	{
-		ft_printf("Error\nNeed a <.ber> extension\n");
-		free(data);
-		exit(EXIT_FAILURE);
-	}
+		error_msg("Error\nNeed a <.ber> extension\n", data);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-	{
-		ft_printf("Error\nCannot open file\n");
-		free(data);
-		exit(EXIT_FAILURE);
-	}
+		error_msg("Error\nCannot open file\n", data);
 	data->size_x = (ft_line_length(fd, data) * IMG_W);
 	data->size_y = (ft_count_lines(fd, data->size_x, IMG_W, data) * IMG_H);
-	close(fd);
+	if (close(fd) < 0)
+		error_msg("Error\nFailed to close file\n", data);
 }
 
 static void	check_characters(t_data *data)

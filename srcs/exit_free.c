@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 15:27:18 by pbailly           #+#    #+#             */
-/*   Updated: 2024/08/11 14:51:29 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/08/11 16:57:12 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ void	free_data(t_data *data)
 {
 	if (data)
 	{
-		free_map(data->map);
+		if (data->map)
+			free_map(data->map);
 		if (data->obj || data->background || data->player || data->text_box)
 			free_images(data);
 		if (data->visited)

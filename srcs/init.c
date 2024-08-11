@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:28:35 by alibabab          #+#    #+#             */
-/*   Updated: 2024/08/11 16:23:22 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/08/11 17:01:06 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ void	init_data(t_data *data)
 	data->text_box = 0;
 	data->background = 0;
 	data->visited = 0;
+	data->map = 0;
+	data->win = 0;
+	data->mlx = 0;
 }
 
 void	init_background(t_data *data)
