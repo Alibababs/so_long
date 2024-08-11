@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:47:31 by pbailly           #+#    #+#             */
-/*   Updated: 2024/08/11 18:49:10 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/08/11 18:51:26 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void	load_map(t_data *data, char *filename)
 		line = get_next_line(fd);
 	}
 	data->map[y] = NULL;
-	close(fd);
+	if (close(fd) < 0)
+		error_msg("Error\nFailed to close file\n", data);
 	if (y == 0)
 		error_msg("Error\nMap file is empty\n", data);
 }
@@ -102,7 +103,8 @@ int	ft_count_lines(int fd, int x, int img_w, t_data *data)
 				&& *line != '\n'))
 		{
 			free(line);
-			close(fd);
+			if (close(fd) < 0)
+				error_msg("Error\nFailed to close file\n", data);
 			error_msg("Error\nMap is not rectangular\n", data);
 		}
 		else
