@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:47:31 by pbailly           #+#    #+#             */
-/*   Updated: 2024/07/28 19:50:00 by pbailly          ###   ########.fr       */
+/*   Updated: 2024/08/11 18:49:10 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ void	load_map(t_data *data, char *filename)
 	int		y;
 	char	*line;
 
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		error_msg("Error\nUnable to open map file\n", data);
 	data->map = malloc((data->size_y / IMG_H + 1) * sizeof(char *));
 	if (!data->map)
 		error_msg("Error\nError allocating\n", data);
 	y = 0;
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		error_msg("Error\nUnable to open map file\n", data);
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
@@ -60,9 +60,9 @@ void	load_map(t_data *data, char *filename)
 		line = get_next_line(fd);
 	}
 	data->map[y] = NULL;
+	close(fd);
 	if (y == 0)
 		error_msg("Error\nMap file is empty\n", data);
-	close(fd);
 }
 
 int	ft_line_length(int fd, t_data *data)
@@ -83,11 +83,7 @@ int	ft_line_length(int fd, t_data *data)
 			break ;
 	}
 	if (length == 0)
-	{
-		ft_printf("Error\nEmpty line\n");
-		free(data);
-		exit(EXIT_FAILURE);
-	}
+		error_msg("Error\nEmpty line\n", data);
 	return (length);
 }
 
@@ -106,9 +102,8 @@ int	ft_count_lines(int fd, int x, int img_w, t_data *data)
 				&& *line != '\n'))
 		{
 			free(line);
-			free(data);
-			ft_printf("Error\nMap is not rectangular\n");
-			exit(EXIT_FAILURE);
+			close(fd);
+			error_msg("Error\nMap is not rectangular\n", data);
 		}
 		else
 		{
