@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 15:27:18 by pbailly           #+#    #+#             */
-/*   Updated: 2024/07/28 19:33:50 by pbailly          ###   ########.fr       */
+/*   Updated: 2024/08/11 13:50:46 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	free_data(t_data *data)
 			data->win = NULL;
 		}
 	}
-	if (data->mlx)
+	if (data && data->mlx)
 	{
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);

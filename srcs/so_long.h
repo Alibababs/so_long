@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:44:30 by alibabab          #+#    #+#             */
-/*   Updated: 2024/07/27 18:21:45 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/08/11 13:52:35 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,6 @@
 # define DOWN 1
 # define LEFT -1
 # define RIGHT 1
-
-typedef struct s_point
-{
-	int		x;
-	int		y;
-}			t_point;
 
 typedef struct s_data
 {
