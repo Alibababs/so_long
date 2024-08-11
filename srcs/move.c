@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 00:09:05 by alibabab          #+#    #+#             */
-/*   Updated: 2024/08/11 14:43:36 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/08/11 17:13:26 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,9 @@ int	touch(int keycode, t_data *data)
 	else if (keycode == 'd' || keycode == 65363)
 		move(data, 'x', RIGHT);
 	if (data->map[data->p_y][data->p_x] == 'E')
-	{
-		ft_printf("Congrats! You managed to kill yourself!\n");
-		free_data(data);
-		exit(EXIT_SUCCESS);
-	}
+		ft_exit_success("Congrats! You managed to kill yourself!\n", data);
 	if (data->map[data->p_y][data->p_x] == 'R')
-	{
-		ft_printf("The witch hunters have caught you!\n");
-		free_data(data);
-		exit(EXIT_SUCCESS);
-	}
+		ft_exit_success("The witch hunters have caught you!\n", data);
 	return (0);
 }
 

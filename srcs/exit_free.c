@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 15:27:18 by pbailly           #+#    #+#             */
-/*   Updated: 2024/08/11 16:57:12 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/08/11 17:10:14 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,12 @@ void	free_data(t_data *data)
 			mlx_destroy_window(data->mlx, data->win);
 			data->win = NULL;
 		}
+		if (data->mlx)
+		{
+			mlx_destroy_display(data->mlx);
+			free(data->mlx);
+			data->mlx = NULL;
+		}
+		free(data);
 	}
-	if (data && data->mlx)
-	{
-		mlx_destroy_display(data->mlx);
-		free(data->mlx);
-		data->mlx = NULL;
-	}
-	free(data);
 }
