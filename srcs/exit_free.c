@@ -6,27 +6,11 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 15:27:18 by pbailly           #+#    #+#             */
-/*   Updated: 2024/08/11 13:50:46 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/08/11 14:51:29 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	error_msg(char *message, t_data *data)
-{
-	{
-		ft_printf(message);
-		free_data(data);
-		exit(EXIT_FAILURE);
-	}
-}
-
-void	ft_lose(t_data *data)
-{
-	ft_printf("Giving up already?\n");
-	free_data(data);
-	exit(EXIT_SUCCESS);
-}
 
 static void	free_map(char **map)
 {
@@ -68,6 +52,23 @@ static void	free_images(t_data *data)
 	}
 }
 
+static void	free_visited(t_data *data)
+{
+	int	i;
+
+	if (data && data->visited)
+	{
+		i = 0;
+		while (i < data->size_y / IMG_H)
+		{
+			free(data->visited[i]);
+			i++;
+		}
+		free(data->visited);
+		data->visited = NULL;
+	}
+}
+
 void	free_data(t_data *data)
 {
 	if (data)
@@ -75,6 +76,8 @@ void	free_data(t_data *data)
 		free_map(data->map);
 		if (data->obj || data->background || data->player || data->text_box)
 			free_images(data);
+		if (data->visited)
+			free_visited(data);
 		if (data->win)
 		{
 			mlx_destroy_window(data->mlx, data->win);

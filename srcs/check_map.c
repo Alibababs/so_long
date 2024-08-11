@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:33:35 by pbailly           #+#    #+#             */
-/*   Updated: 2024/07/29 20:00:40 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/08/11 15:52:14 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,22 @@ void	check_argc(t_data *data, int argc, char **argv)
 	int	fd;
 
 	init_data(data);
-	fd = open(argv[1], O_RDONLY);
-	if (argc != 2 || fd < 0)
+	if (argc != 2)
 	{
-		ft_printf("Error\nInvalid map\n");
+		ft_printf("Error\nExpected 2 arguments\n");
 		free(data);
 		exit(EXIT_FAILURE);
 	}
 	if (!ft_strnstr(&argv[1][ft_strlen(argv[1]) - 4], ".ber", 4))
 	{
-		ft_printf("Error\nNeed a <.ber> file\n");
+		ft_printf("Error\nNeed a <.ber> extension\n");
+		free(data);
+		exit(EXIT_FAILURE);
+	}
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+	{
+		ft_printf("Error\nCannot open file\n");
 		free(data);
 		exit(EXIT_FAILURE);
 	}

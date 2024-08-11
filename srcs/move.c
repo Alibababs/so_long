@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 00:09:05 by alibabab          #+#    #+#             */
-/*   Updated: 2024/07/27 18:22:27 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/08/11 14:43:36 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	touch(int keycode, t_data *data)
 {
 	if (keycode == 65307)
-		ft_lose(data);
+		ft_exit_success("Giving up already ?\n", data);
 	else if (keycode == 'w' || keycode == 65362)
 		move(data, 'y', UP);
 	else if (keycode == 'a' || keycode == 65361)

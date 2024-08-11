@@ -3,18 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:44:26 by alibabab          #+#    #+#             */
-/*   Updated: 2024/07/29 17:13:54 by pbailly          ###   ########.fr       */
+/*   Updated: 2024/08/11 15:40:53 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void	error_msg(char *message, t_data *data)
+{
+	ft_printf(message);
+	free_data(data);
+	exit(EXIT_FAILURE);
+}
+
+void	ft_exit_success(char *message, t_data *data)
+{
+	ft_printf(message);
+	free_data(data);
+	exit(EXIT_SUCCESS);
+}
+
 static int	cross(t_data *data)
 {
-	ft_lose(data);
+	ft_exit_success("Giving up already ?\n", data);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:44:30 by alibabab          #+#    #+#             */
-/*   Updated: 2024/08/11 13:52:35 by alibaba          ###   ########.fr       */
+/*   Updated: 2024/08/11 14:44:12 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <stdbool.h>
 
 # define IMG_W 64
 # define IMG_H 64
@@ -46,13 +47,14 @@ typedef struct s_data
 	int		movement;
 	int		exit_found;
 	int		c_acces;
+	int		**visited;
 }			t_data;
 
 void		check_argc(t_data *data, int argc, char **argv);
 void		check_map(t_data *data);
 
 void		error_msg(char *message, t_data *data);
-void		ft_lose(t_data *data);
+void		ft_exit_success(char *message, t_data *data);
 void		free_data(t_data *data);
 
 void		init_data(t_data *data);
